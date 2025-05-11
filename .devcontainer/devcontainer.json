@@ -1,0 +1,21 @@
+{
+	"name": "NestJS Dev Container",
+	"dockerComposeFile": "../docker-compose.yml",
+	"service": "dev",
+	"workspaceFolder": "/workspace",
+	"forwardPorts": [
+		3000,
+		1433,
+		27017
+	],
+	"shutdownAction": "stopCompose",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"cweijan.dbclient-jdbc",
+				"cweijan.vscode-database-client2",
+				"mongodb.mongodb-vscode"
+			]
+		}
+	}
+}

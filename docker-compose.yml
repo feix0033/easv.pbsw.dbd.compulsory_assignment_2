@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  dev:
+    image: node:22
+    volumes:
+      - .:/workspace
+    working_dir: /workspace
+    command: sleep infinity
+    depends_on:
+      - postgres  # 依赖项改为 postgres
+      - mongo
+    networks:
+      - app-network
+
+  postgres:  # 新增 PostgreSQL 服务
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: postgres      # 管理员用户名
+      POSTGRES_PASSWORD: postgres  # 管理员密码（生产环境请使用强密码）
+      POSTGRES_DB: testdb          # 默认创建的数据库
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # 持久化数据
+      # - ./init-scripts:/docker-entrypoint-initdb.d  # 自动执行初始化脚本
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d testdb"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  mongo:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_DATABASE: test
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - app-network
+
+volumes:
+  postgres_data:  # 修改卷名
+  mongo_data:
+
+networks:
+  app-network:
+    driver: bridge
