@@ -14,8 +14,25 @@
 			"extensions": [
 				"cweijan.dbclient-jdbc",
 				"cweijan.vscode-database-client2",
-				"mongodb.mongodb-vscode"
+				"mongodb.mongodb-vscode",
+				"formulahendry.auto-close-tag",
+				"formulahendry.auto-rename-tag",
+				"aaron-bond.better-comments",
+				"hediet.vscode-drawio",
+				"xabikos.JavaScriptSnippets",
+				"dbaeumer.vscode-eslint",
+				"github.vscode-github-actions",
+				"oderwat.indent-rainbow",
+				"ms-vscode.live-server",
+				"bierner.markdown-mermaid",
+				"DavidAnson.vscode-markdownlint",
+				"christian-kohler.path-intellisense",
+				"hoovercj.vscode-power-mode",
+				"esbenp.prettier-vscode",
+				"bradlc.vscode-tailwindcss",
+				"redhat.vscode-yaml"
 			]
 		}
-	}
+	},
+	"postCreateCommand": "npm install && npm install -g @nestjs/cli"
 }
