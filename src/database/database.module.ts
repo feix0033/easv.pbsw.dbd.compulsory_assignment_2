@@ -20,7 +20,14 @@ import { MongooseModule } from '@nestjs/mongoose';
         logging: true,
       }),
     }),
-    MongooseModule.forRoot('mongodb://root:example@mongo:27017/test?authSource=admin'),
+    MongooseModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: async (configService: ConfigService) => ({
+        uri: configService.get<string>('MONGO_URI'),
+        // useUnifiedTopology: true,
+      }),
+    }),
   ],
 })
 export class DatabaseModule {}

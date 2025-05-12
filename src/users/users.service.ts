@@ -6,32 +6,30 @@ import { User } from './user.entity';
 
 @Injectable()
 export class UsersService {
-	constructor(
-		@InjectRepository(User)
-		private readonly usersRepository: Repository<User>,
-	) { }
+  constructor(
+    @InjectRepository(User)
+    private readonly usersRepository: Repository<User>,
+  ) {}
 
-	create(createUserDto: CreateUserDto): Promise<User> {
-		console.log(createUserDto);
-		
-		const user = new User();
-		user.firstName = createUserDto.firstName;
-		user.lastName = createUserDto.lastName;
+  create(createUserDto: CreateUserDto): Promise<User> {
+    console.log(createUserDto.firstName);
 
-		console.log(user);
-		
-		return this.usersRepository.save(user);
-	}
+    const user = new User();
+    user.firstName = createUserDto.firstName;
+    user.lastName = createUserDto.lastName;
 
-	async findAll(): Promise<User[]> {
-		return this.usersRepository.find();
-	}
+    return this.usersRepository.save(user);
+  }
 
-	findOne(id: number): Promise<User> {
-		return this.usersRepository.findOneBy({ id: id });
-	}
+  async findAll(): Promise<User[]> {
+    return this.usersRepository.find();
+  }
 
-	async remove(id: string): Promise<void> {
-		await this.usersRepository.delete(id);
-	}
+  findOne(id: number): Promise<User> {
+    return this.usersRepository.findOneBy({ id: id });
+  }
+
+  async remove(id: string): Promise<void> {
+    await this.usersRepository.delete(id);
+  }
 }

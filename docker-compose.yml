@@ -1,18 +1,4 @@
-version: '3.8'
-
 services:
-  dev:
-    image: node:22
-    volumes:
-      - .:/workspace
-    working_dir: /workspace
-    command: sleep infinity
-    depends_on:
-      - postgres  # 依赖项改为 postgres
-      - mongo
-    networks:
-      - app-network
-
   postgres:  # 新增 PostgreSQL 服务
     image: postgres:15-alpine
     environment:
@@ -23,7 +9,6 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data  # 持久化数据
-      # - ./init-scripts:/docker-entrypoint-initdb.d  # 自动执行初始化脚本
     networks:
       - app-network
     healthcheck:
