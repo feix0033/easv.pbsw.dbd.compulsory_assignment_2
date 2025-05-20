@@ -1,60 +1,6 @@
 # easv.pbsw.dbd.compulsory-assignment-2
 
-## Scenario
-
-Design and implement the backend of an e-commerce platform specializing in second-hand items.
-
-The platform allows users to
-
-- List items for sale
-- Browse listings
-- Place orders
-- Review sellers
-
 ## Demand analysis
-
-### Structured Analysis
-
-```mermaid
----
-title: DFD 0
----
-flowchart LR
-
-    u[user]
-
-    a[auth service]
-    l[listing service]
-    o[order service]
-    r[review service]
-
-    ad[[auth database]]
-    ld[[listing database]]
-    od[[order database]]
-    rd[[review database]]
-
-    u -->|login| a -->|login| ad
-    u -->|logout| a -->|logout| ad
-
-    r -->|link the user with review| a
-    u -->|Review seller| r <--> rd
-
-    u -->|Browse listing| l <--> ld
-    u -->|list itme for sale| l
-
-    o -->|update items after order paid| l
-    u -->|Place order| o <--> od
-
-
-
-    subgraph Level1 [listing item for sale]
-        direction TB
-        user(user)
-        list(list)
-        user -->|add itmes in list|list
-    end
-
-```
 
 ### ER diagram
 
@@ -63,53 +9,52 @@ flowchart LR
 title: ER Diagram
 ---
 erDiagram
-    Users {
-        int id PK
-        string nickname
+
+    User ||--o{ SaleList : "creates"
+    User ||--o{ Cart : "owns"
+    User ||--o{ Review : "writes"
+    SaleList ||--o{ Item : "contains"
+    Cart }o--|| Item : "contains"
+    Review }|--|| User : "reviewer"
+    Review }|--|| User : "seller"
+
+    User {
+        string user_id PK
         string email
         string password
-        string address
-        string paymentMethod
+        string username
     }
 
-    Lists {
-        int id PK
-        int sellId FK
-        int[] itemsId FK
-        boolean isEmptyList
-    }
-
-    Items {
-        int id PK
+    SaleList {
+        string sale_list_id PK
         string name
+        string user_id FK
+    }
+
+    Item {
+        string item_id PK
+        string name
+        text description
+        string photo_id
         decimal price
-        boolean soldOut
-        string imgUrl
+        bool is_sold
+        string sale_list_id FK
     }
 
-    Reviews {
-        int id PK
-        int reviewerId FK
-        int sellerId FK
-        string review
+    Cart {
+        string cart_id PK
+        string user_id FK
+        string item_id FK
+        decimal total_price
+        timestamp checkout_date
     }
 
-    Order {
-        int id PK
-        int userId FK
-        string items
-        decimal totalPrice
-        boolean isPaid
-        string paymentMethod
-        boolean isDelivered
-        string deliverAddress
+    Review {
+        string review_id PK
+        string reviewer_id FK
+        string seller_id FK
+        text content
     }
-
-    Users ||--o{ Lists : "Create"
-    Users ||--o{ Order : "Make"
-    Users ||--o{ Reviews : "Write"
-    Lists ||--o{ Items : "Have"
-    Order }o--|| Items : "Include"
 ```
 
 ### Database Selection
