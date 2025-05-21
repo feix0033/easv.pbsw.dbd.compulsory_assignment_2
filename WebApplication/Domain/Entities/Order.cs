@@ -9,6 +9,6 @@ public class Order
     public bool IsCheckedout { get; set; }
     public DateTime CheckoutDate { get; set; }
     public List<Item>? OrderItems { get; set; }
-    public decimal TotalPrice { get; set; }
-    public DateTime DeleteTime { get; set; }
+    public decimal? TotalPrice { get; set; }
+    public DateTime? DeleteTime { get; set; }
 }

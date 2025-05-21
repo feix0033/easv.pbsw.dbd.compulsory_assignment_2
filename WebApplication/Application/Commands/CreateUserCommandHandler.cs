@@ -8,9 +8,7 @@ public class CreateUserCommandHandler(UserService userService, IDomainEventBus d
 {
 	public async Task HandleAsync(CreateUserCommand command)
 	{
-		await userService.CreateUserAsync();
-		await domainEventBus.PublishAsync(new UserCreateEvent(
-			command.email, command.password, command.username
-		));
+		await userService.CreateUserAsync(command.userId, command.user);
+		await domainEventBus.PublishAsync(new UserCreateEvent(command.user.Username, command.user.Email, command.user.Password));
 	}
 }

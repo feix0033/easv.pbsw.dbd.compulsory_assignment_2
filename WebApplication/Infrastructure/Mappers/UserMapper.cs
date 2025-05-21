@@ -13,17 +13,21 @@ public static class UserMapper
             Id = new UserId(user.Id),
             Email = user.Email,
             Password = user.Password,
+            DeleteTime = user.DeleteTime
         };
     }
 
-    public static UserDbModel ToMongoDb(this User user)
+    public static UserMongoDbModel ToMongoDb(this User user, Order[] orders, Item[] items, Review[] reviews)
     {
-        return new UserDbModel
+        return new UserMongoDbModel
         {
             Id = user.Id.Value,
             Email = user.Email,
             Password = user.Password,
             DeleteTime = user.DeleteTime,
+            Items = items,
+            Orders = orders,
+            Reviews = reviews
         };
     }
 }

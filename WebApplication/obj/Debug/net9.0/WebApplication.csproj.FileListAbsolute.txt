@@ -1,0 +1,7 @@
+/Users/fei/feix0033@github.com/easv/easv.pbsw.dbd.compulsory_assignment_2/WebApplication/obj/Debug/net9.0/WebApplication.csproj.AssemblyReference.cache
+/Users/fei/feix0033@github.com/easv/easv.pbsw.dbd.compulsory_assignment_2/WebApplication/obj/Debug/net9.0/WebApplication.GeneratedMSBuildEditorConfig.editorconfig
+/Users/fei/feix0033@github.com/easv/easv.pbsw.dbd.compulsory_assignment_2/WebApplication/obj/Debug/net9.0/WebApplication.AssemblyInfoInputs.cache
+/Users/fei/feix0033@github.com/easv/easv.pbsw.dbd.compulsory_assignment_2/WebApplication/obj/Debug/net9.0/WebApplication.AssemblyInfo.cs
+/Users/fei/feix0033@github.com/easv/easv.pbsw.dbd.compulsory_assignment_2/WebApplication/obj/Debug/net9.0/WebApplication.csproj.CoreCompileInputs.cache
+/Users/fei/feix0033@github.com/easv/easv.pbsw.dbd.compulsory_assignment_2/WebApplication/obj/Debug/net9.0/WebApplication.MvcApplicationPartsAssemblyInfo.cache
+/Users/fei/feix0033@github.com/easv/easv.pbsw.dbd.compulsory_assignment_2/WebApplication/obj/Debug/net9.0/WebApplication.sourcelink.json

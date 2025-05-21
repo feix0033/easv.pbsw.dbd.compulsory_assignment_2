@@ -5,18 +5,14 @@ namespace WebApplication.Infrastructure.Contexts;
 
 public class MongoDbContext
 {
-    public readonly IMongoCollection<ItemDbModel> Items;
-    public readonly IMongoCollection<OrderDbModel> Orders;
-    public readonly IMongoCollection<ReviewDbModel> Reviews;
-    public readonly IMongoCollection<UserDbModel> Users;
+    public readonly IMongoCollection<UserMongoDbModel> Users;
+    public readonly IMongoCollection<OrderMongoDbModel> Orders;
 
     public MongoDbContext(string connectionString, string databaseName)
     {
         var client = new MongoClient(connectionString);
         var database = client.GetDatabase(databaseName);
-        Items = database.GetCollection<ItemDbModel>("Items");
-        Orders = database.GetCollection<OrderDbModel>("Orders");
-        Reviews = database.GetCollection<ReviewDbModel>("Reviews");
-        Users = database.GetCollection<UserDbModel>("Users");
+        Users = database.GetCollection<UserMongoDbModel>("Users");
+        Orders = database.GetCollection<OrderMongoDbModel>("Orders");
     }
 }

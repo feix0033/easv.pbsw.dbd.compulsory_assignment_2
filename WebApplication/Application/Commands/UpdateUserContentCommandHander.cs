@@ -10,7 +10,7 @@ public class UpdateUserContentCommandHandler(UserService userService, IDomainEve
 {
 	public async Task HandleAsync(UpdateUserContentCommand command)
 	{
-		await userService.UpdateUserContentAsync(command.UserId, command.Content);
+		await userService.UpdateUserContentAsync(command.UserId, command.User);
 		await domainEventBus.PublishAsync(new UserChangeEvent { userId = command.UserId });
 	}
 

@@ -10,8 +10,8 @@ public class UserServiceArgs : IUserServiceArgs
     public required IUserRepository UserPersistenceRepository;
     public required IUserRepository UserCacheRepository;
 
-    IUserRepository IUserServiceArgs.UserPersistenceRepository { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-    IUserRepository IUserServiceArgs.UserCacheRepository { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+	IUserRepository IUserServiceArgs.UserPersistenceRepository { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+	IUserRepository IUserServiceArgs.UserCacheRepository { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 }
 
 public class UserService(IUserServiceArgs args)
@@ -34,12 +34,12 @@ public class UserService(IUserServiceArgs args)
     }
 
 
-    public async Task<User> UpdateUserContentAsync(UserId userId, string content)
+    public Task<User> UpdateUserContentAsync(UserId userId, User user)
     {
         throw new NotImplementedException();
     }
 
-    public async Task<User> CreateUserAsync(UserId userId, string content)
+    public Task<User> CreateUserAsync(UserId userId, User user)
     {
         throw new NotImplementedException();
     }
