@@ -6,6 +6,9 @@ import { UsersModule } from './users/users.module';
 import { ConfigModule } from '@nestjs/config';
 import { DatabaseModule } from './database/database.module';
 import { CatsModule } from './cats/cats.module';
+import { ApplicationModule } from './application/application.module';
+import { PresentationModule } from './presentation/presentation.module';
+import { UserController } from './user/user.controller';
 
 @Module({
   imports: [
@@ -16,8 +19,10 @@ import { CatsModule } from './cats/cats.module';
     DatabaseModule,
     UsersModule,
     CatsModule,
+    ApplicationModule,
+    PresentationModule,
   ],
-  controllers: [AppController],
+  controllers: [AppController, UserController],
   providers: [AppService],
 })
 export class AppModule {
