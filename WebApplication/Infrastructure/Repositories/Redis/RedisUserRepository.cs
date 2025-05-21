@@ -5,7 +5,7 @@ using WebApplication.Infrastructure.Contexts;
 
 namespace WebApplication.Infrastructure.Repositories.Redis;
 
-public class RedisPostRepository(RedisDbContext context, TimeSpan expiry): IUserRepository
+public class RedisUserRepository(RedisDbContext context, TimeSpan expiry): IUserRepository
 {
     public Task<IEnumerable<User>> GetAllUsersAsync()
     {
